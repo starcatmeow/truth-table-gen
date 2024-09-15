@@ -1,0 +1,32 @@
+WHITESPACE   = _{ " " | "\t" | "\n" }
+symbol       =  { 'a'..'z' }
+not          =  { "!" }
+and          =  { "&" }
+or           =  { "|" }
+implies      =  { "=>" }
+iff          =  { "<=>" }
+ops          =  { and | or | implies | iff }
+false        =  { "false" }
+true         =  { "true" }
+atom         =  { symbol | false | true | "(" ~ iff_expr ~ ")" }
+not_expr     =  {
+    not ~ atom
+  | atom
+}
+and_expr     =  {
+    (not_expr ~ and)* ~ not_expr
+  | not_expr
+}
+or_expr      =  {
+    (and_expr ~ or)* ~ and_expr
+  | and_expr
+}
+implies_expr =  {
+    (or_expr ~ implies)* ~ or_expr
+  | or_expr
+}
+iff_expr     =  {
+    (implies_expr ~ iff)* ~ implies_expr
+  | implies_expr
+}
+expr         =  { SOI ~ iff_expr ~ EOI }

@@ -1,0 +1,14 @@
+[package]
+name = "truth-table-gen"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib","rlib"]
+
+[dependencies]
+anyhow = "1.0.88"
+ascii_table = "4.0.4"
+pest = "2.7.12"
+pest_derive = "2.7.12"
+wasm-bindgen = "0.2.93"

@@ -8,7 +8,7 @@ iff          =  { "<=>" }
 ops          =  { and | or | implies | iff }
 false        =  { "false" }
 true         =  { "true" }
-atom         =  { symbol | false | true | "(" ~ iff_expr ~ ")" }
+atom         =  { false | true | "(" ~ iff_expr ~ ")" | symbol }
 not_expr     =  {
     not ~ atom
   | atom
